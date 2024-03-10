@@ -1,3 +1,7 @@
+<?php
+
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +14,7 @@
       integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="popup d-none">
@@ -31,16 +35,22 @@
     </div>
     <nav>
       <span class="logo">
-        <a href="../index.html"
+        <a href="index.php"
           ><span>Idyllic <b class="active"></b></span></a
         >
       </span>
       <ul>
-        <li><a href="../index.html"> HOME</a></li>
-        <li><a class="active" href="../webpages/product.html">EVENTS</a></li>
-        <!-- <li><a href="webpages/faq.html">FAQs</a></li> -->
-        <li><a href="../webpages/contact.html">CONTACT US</a></li>
-        <li><a href="../login.html">LOG IN</a></li>
+        <li><a href="index.php"> HOME</a></li>
+        <li><a class="active" href="product.php">EVENTS</a></li>
+        <!-- <li><a href="webpages/faq.php">FAQs</a></li> -->
+        <li><a href="contact.php">CONTACT US</a></li>
+        <li> <?php
+          if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+              echo '<a href="logout.php">LOG OUT</a>';
+          } else {
+              echo '<a href="login.php">LOG IN</a>';
+          }
+          ?></li>
       </ul>
     </nav>
     <main class="product_main">
@@ -48,7 +58,7 @@
       <div class="product">
         <div class="cards">
           <section class="card w-33">
-            <img src="../images/wedding.jpg" alt="blog1 feature image" />
+            <img src="images/wedding.jpg" alt="blog1 feature image" />
             <div class="bottom">
               <p class="category">Weddings</p>
               <p class="title">
@@ -59,7 +69,7 @@
             </div>
           </section>
           <section class="card w-33 card-2">
-            <img src="../images/concert.jpg" alt="blog2 feature image" />
+            <img src="images/concert.jpg" alt="blog2 feature image" />
             <div class="bottom">
               <p class="category">Concert</p>
               <p class="title">
@@ -70,7 +80,7 @@
             </div>
           </section>
           <section class="card w-33">
-            <img src="../images/celebration.jpg" alt="blog3 feature image" />
+            <img src="images/celebration.jpg" alt="blog3 feature image" />
             <div class="bottom">
               <p class="category">Celebrations</p>
               <p class="title">
@@ -89,16 +99,16 @@
       <div class="left w-33">
         <p class="head">QUICK LINKS</p>
         <ul class="clear">
-          <li><a href="webpages/product.html">EVENTS</a></li>
-          <li><a href="webpages/contact.html">Contact Us</a></li>
-          <!-- <li><a href="webpages/faq.html">FAQs</a></li> -->
+          <li><a href="product.php">EVENTS</a></li>
+          <li><a href="contact.php">Contact Us</a></li>
+          <!-- <li><a href="webpages/faq.php">FAQs</a></li> -->
           <li><a href="">Privacy & Policy</a></li>
           <li><a href="">Terms & Conditions</a></li>
         </ul>
       </div>
       <div class="mid w-33">
         <div class="logo">
-          <a href="index.html"
+          <a href="index.php"
             ><span>Idyllic <b class="active"></b></span></a
           >
         </div>
@@ -134,6 +144,6 @@
       </div>
     </footer>
 
-    <script src="../js/script.js"></script>
+    <script src="script.js"></script>
   </body>
-</html>
+        </html>
